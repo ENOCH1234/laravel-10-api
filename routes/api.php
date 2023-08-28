@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\V1\CompleteTaskController;
 use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
@@ -24,3 +25,6 @@ Route::prefix('v1')->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
